@@ -39,12 +39,23 @@ class BinarySearchTree {
 
 
   search(val) {
-    if(!this.root) return false;
+    // if(!this.root) return false;
 
-    if(this.root.val === val) return true;
+    // if(this.root.val === val) return true;
     
-    if(this.root.val > val) return searchBSTRecursive(this.root.left);
-    if(this.root.val < val) return searchBSTRecursive(this.root.right);
+    // if(this.root.val > val) return this.search(this.root.left);
+    // if(this.root.val < val) return this.search(this.root.right);
+    let currentNode = this.root;
+    while(currentNode){
+      if(currentNode.val === val) {
+        return true;
+      } else if(currentNode.val < val){
+        currentNode = currentNode.right;
+      } else if(currentNode.val > val){
+        currentNode = currentNode.left;
+      }
+    }
+    return false;
   }
 
   preOrderTraversal(currentNode = this.root) {
