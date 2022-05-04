@@ -92,7 +92,7 @@ class BinarySearchTree {
       console.log(currentNode.val);
       if(currentNode.left) stack.push(currentNode.left);
       if(currentNode.right) stack.push(currentNode.right);
+    }
   }
 }
-
 module.exports = { BinarySearchTree, TreeNode };
