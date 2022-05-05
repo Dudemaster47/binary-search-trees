@@ -39,12 +39,7 @@ class BinarySearchTree {
 
 
   search(val) {
-    // if(!this.root) return false;
 
-    // if(this.root.val === val) return true;
-    
-    // if(this.root.val > val) return this.search(this.root.left);
-    // if(this.root.val < val) return this.search(this.root.right);
     let currentNode = this.root;
     while(currentNode){
       if(currentNode.val === val) {
@@ -59,35 +54,38 @@ class BinarySearchTree {
   }
 
   preOrderTraversal(currentNode = this.root) {
-    if(!this.root) return;
-    console.log(currentNode.value);
+    if(!currentNode) return;
+    console.log(currentNode.val);
     this.preOrderTraversal(currentNode.left);
     this.preOrderTraversal(currentNode.right);
   }
 
 
   inOrderTraversal(currentNode = this.root) {
-    if(!this.root) return
-    inOrderTraversal(currentNode.left)
+    if(!currentNode) return;
+    this.inOrderTraversal(currentNode.left)
     console.log(currentNode.val)
-    inOrderTraversal(currentNode.right)
+    this.inOrderTraversal(currentNode.right)
 
   }
 
 
   postOrderTraversal(currentNode = this.root) {
-    if(!this.root) return
-    inOrderTraversal(currentNode.left)
-    inOrderTraversal(currentNode.right)
+    if(!currentNode) return;
+    this.postOrderTraversal(currentNode.left)
+    this.postOrderTraversal(currentNode.right)
     console.log(currentNode.val)
   }
 
     // Breadth First Traversal - Iterative
   breadthFirstTraversal() {
-    const queue = [this.root]
+    if(!this.root) return;
 
-    while(queue){
-      const currentNode = queue.shift();
+    const queue = [this.root]
+    let currentNode;
+
+    while(queue.length){
+      currentNode = queue.shift();
       console.log(currentNode.val);
       if(currentNode.left) queue.push(currentNode.left);
       if(currentNode.right) queue.push(currentNode.right);
@@ -97,13 +95,19 @@ class BinarySearchTree {
 
   // Depth First Traversal - Iterative
   depthFirstTraversal() {
-    const stack = [this.root];
-    while(stack){
-      const currentNode = stack.shift();
+    if(!this.root) return;
+    
+    
+    let stack = [this.root];
+    let currentNode;
+
+    while(stack.length){
+      currentNode = stack.pop();
       console.log(currentNode.val);
       if(currentNode.left) stack.push(currentNode.left);
       if(currentNode.right) stack.push(currentNode.right);
     }
+    return;
   }
 }
 module.exports = { BinarySearchTree, TreeNode };
